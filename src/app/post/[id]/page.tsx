@@ -1,19 +1,35 @@
 import { fetchPost } from "@/lib/api";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PostPageProps): Promise<Metadata> {
+  try {
+    const { id } = await params;
+    const post = await fetchPost(id);
+    return {
+      title: `${post.title} | Blog App`,
+      description: post.body.slice(0, 160),
+    };
+  } catch {
+    return {
+      title: "Post Not Found | Blog App",
+      description: "The requested post could not be found.",
+    };
+  }
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  if (!params?.id) {
-    notFound();
-  }
-
   try {
-    const post = await fetchPost(params.id);
+    const { id } = await params;
+    const post = await fetchPost(id);
 
     return (
       <article className="max-w-2xl mx-auto">
@@ -29,7 +45,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <div className="prose lg:prose-xl">{post.body}</div>
       </article>
     );
-  } catch (error) {
+  } catch {
     notFound();
   }
 }

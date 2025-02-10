@@ -1,8 +1,8 @@
-import { Post } from "@/lib/types";
+import { Post } from "./types";
 
 export async function fetchPosts(): Promise<Post[]> {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    next: { revalidate: 3600 }, // revalidate every hour
+    next: { revalidate: 3600 },
   });
 
   if (!response.ok) {
@@ -16,16 +16,20 @@ export async function fetchPosts(): Promise<Post[]> {
   }));
 }
 
-export async function fetchPost(id: string): Promise<Post> {
+export async function fetchPost(postId: string): Promise<Post> {
+  if (!postId) {
+    throw new Error("Post ID is required");
+  }
+
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${id}`,
+    `https://jsonplaceholder.typicode.com/posts/${postId}`,
     {
       next: { revalidate: 3600 },
     },
   );
 
   if (!response.ok) {
-    throw new Error("Failed to fetch post");
+    throw new Error(`Failed to fetch post with ID: ${postId}`);
   }
 
   const post = await response.json();

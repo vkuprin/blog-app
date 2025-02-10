@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             {children}
           </main>
           <footer className="bg-gray-800 text-white p-4 text-center">
-            <p>&copy; {Date.now()} Blog App</p>
+            <p>&copy; VKUPRIN Blog App</p>
           </footer>
         </div>
       </body>
