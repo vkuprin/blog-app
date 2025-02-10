@@ -22,27 +22,21 @@ Before you begin, ensure you have the following installed:
 
 ## Getting Started
 
-1. Clone the repository:
-```bash
-git clone <your-repository-url>
-cd blog-app
-```
-
-2. Install dependencies:
+1. Install dependencies:
 ```bash
 yarn install
 # or
 npm install
 ```
 
-3. Run the development server:
+2. Run the development server:
 ```bash
 yarn dev
 # or
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
