@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Blog Application
+
+A modern blog application built with Next.js 15 App Router and Tailwind CSS, featuring server components, dynamic routing, and hashtag filtering.
+
+## Features
+
+- 🚀 Built with Next.js 15 App Router
+- 💅 Styled with Tailwind CSS
+- 📱 Fully responsive design
+- 🏷️ Hashtag filtering system
+- 🔄 Dynamic routing
+- 🎨 Clean and modern UI
+- ⚡ Server Components for better performance
+- 🔍 SEO optimized with metadata
+- 🎯 TypeScript for type safety
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (version 18.17 or later)
+- Yarn or npm
 
 ## Getting Started
 
-First, run the development server:
-
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repository-url>
+cd blog-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+yarn install
+# or
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+yarn dev
+# or
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # App Router directory
+│   ├── about/             # About page
+│   ├── post/[id]/         # Dynamic post pages
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/            # Reusable components
+│   ├── BlogCard.tsx       # Blog post card component
+│   ├── HashtagFilter.tsx  # Hashtag filtering component
+│   └── Navbar.tsx         # Navigation component
+└── lib/                   # Utility functions and types
+    ├── api.ts             # API functions
+    └── types.ts           # TypeScript types
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Home Page (`app/page.tsx`)
+- Displays a grid of blog posts
+- Implements hashtag filtering
+- Server-side rendering for optimal performance
 
-## Deploy on Vercel
+### Post Page (`app/post/[id]/page.tsx`)
+- Dynamic routing for individual posts
+- Metadata generation for SEO
+- Error handling with notFound()
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### BlogCard Component
+- Displays post preview
+- Handles hashtag interactions
+- Responsive design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### HashtagFilter Component
+- Filters posts by hashtag
+- Clear and intuitive UI
+- Client-side filtering
+
+## API Integration
+
+The application integrates with the JSONPlaceholder API to fetch blog posts. Each post is enhanced with random hashtags for demonstration purposes.
+
+## Styling
+
+- Tailwind CSS for utility-first styling
+- Responsive design principles
+- Custom components following Tailwind best practices
+
+## Error Handling
+
+- Proper error boundaries
+- Loading states
+- 404 page for non-existent posts
+- Network error handling
+
+## Development
+
+```bash
+# Run development server
+yarn dev
+
+# Build for production
+yarn build
+
+# Start production server
+yarn start
+
+```
